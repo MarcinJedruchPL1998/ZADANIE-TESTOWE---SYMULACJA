@@ -116,7 +116,7 @@ public class SimulationManager : MonoBehaviour
         StartCoroutine(DestroyingParticleEffect(agent.transform.position));
 
 
-        if(name.text == agent.name)
+        if(name.text == agent.name) //Close clicked object panel before destroying it
         {
             clickedObjectPanel.SetActive(false);
         }
@@ -124,6 +124,7 @@ public class SimulationManager : MonoBehaviour
         Destroy(agent);
     }
 
+    //Show destroying particle effect
     IEnumerator DestroyingParticleEffect(Vector3 pos)
     {
         GameObject pe = Instantiate(destroyPE.gameObject, pos, Quaternion.identity);

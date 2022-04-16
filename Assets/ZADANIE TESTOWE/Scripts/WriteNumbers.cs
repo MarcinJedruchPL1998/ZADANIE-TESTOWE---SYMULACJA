@@ -20,7 +20,7 @@ public class WriteNumbers : MonoBehaviour
             {
                 numberTxt = "Marko, ";
 
-                if(number % 5 == 0)
+                if(number % 5 == 0) //The number is divisible by 3 and 5
                 {
                     numberTxt = "MarkoPolo, ";
                 }
@@ -29,13 +29,13 @@ public class WriteNumbers : MonoBehaviour
             {
                 numberTxt = "Polo, ";
 
-                if(number % 3 == 0)
+                if(number % 3 == 0) //The number is divisible by 5 and 3
                 {
                     numberTxt = "MarkoPolo, ";
                 }
             }
             
-            else
+            else //The number is non divisible by 3 or 5
             {
                 numberTxt = number.ToString() + ", ";
             }

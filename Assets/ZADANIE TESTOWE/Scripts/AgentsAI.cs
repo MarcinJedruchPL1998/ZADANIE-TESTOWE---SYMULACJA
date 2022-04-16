@@ -44,6 +44,7 @@ public class AgentsAI : MonoBehaviour
         return randomPos;
     }
 
+    //Check collision with other agent
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "agent")
