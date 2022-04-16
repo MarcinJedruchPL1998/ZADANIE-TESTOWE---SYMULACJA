@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] private List<GameObject> agents;
 
     [SerializeField] private Material unclickedMaterial, clickedMaterial;
+
+    [SerializeField] private GameObject clickedObjectPanel;
+    [SerializeField] private Text name;
+    [SerializeField] private Text lives;
 
     void Start()
     {
@@ -55,20 +60,29 @@ public class SimulationManager : MonoBehaviour
             if(Physics.Raycast(ray, out rayhit) && rayhit.collider.tag == "agent")
             {
                 GameObject click = rayhit.collider.gameObject;
+                clickedObjectPanel.SetActive(true);
+                name.text = click.name;
+                lives.text = click.GetComponent<AgentsAI>().livePoints.ToString();
 
-                if (!click.GetComponent<AgentsAI>().clicked)
+                for(int i = 0; i < agents.Count; i++)
                 {
-                    click.GetComponent<AgentsAI>().clicked = true;
-                    click.GetComponent<MeshRenderer>().material = clickedMaterial;
-                    click.transform.GetChild(0).GetComponent<MeshRenderer>().material = clickedMaterial;
+                    if (agents[i] == click)
+                    {
+                        agents[i].GetComponent<AgentsAI>().clicked = true;
+                        agents[i].GetComponent<MeshRenderer>().material = clickedMaterial;
+                        agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = clickedMaterial;
+                    }
+
+                    else
+                    {
+                        agents[i].GetComponent<AgentsAI>().clicked = false;
+                        agents[i].GetComponent<MeshRenderer>().material = unclickedMaterial;
+                        agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = unclickedMaterial;
+
+                    }
                 }
 
-                else
-                {
-                    click.GetComponent<AgentsAI>().clicked = false;
-                    click.GetComponent<MeshRenderer>().material = unclickedMaterial;
-                    click.transform.GetChild(0).GetComponent<MeshRenderer>().material = unclickedMaterial;
-                }
+                
             }
         }
     }

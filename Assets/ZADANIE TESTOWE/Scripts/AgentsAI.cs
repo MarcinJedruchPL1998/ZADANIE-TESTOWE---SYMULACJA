@@ -7,7 +7,7 @@ public class AgentsAI : MonoBehaviour
     public SimulationManager simulationManager;
     public GameObject spawnArea; 
     [SerializeField] private float moveSpeed;
-    [SerializeField] private int livePoints = 3;
+    public int livePoints = 3;
     Vector3 randomPos;
     public bool clicked;
 
@@ -27,6 +27,7 @@ public class AgentsAI : MonoBehaviour
         {
             SetRandomPosition();
         }
+
 
     }
 
@@ -56,8 +57,4 @@ public class AgentsAI : MonoBehaviour
         }
     }
 
-    public void Clicked()
-    {
-
-    }
 }
