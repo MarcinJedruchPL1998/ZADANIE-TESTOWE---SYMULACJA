@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a7d20009ee2ca40a468e7c1866f132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea: {fileID: 0}
+  moveSpeed: 100
 --- !u!1 &1657395576257890347
 GameObject:
   m_ObjectHideFlags: 0
