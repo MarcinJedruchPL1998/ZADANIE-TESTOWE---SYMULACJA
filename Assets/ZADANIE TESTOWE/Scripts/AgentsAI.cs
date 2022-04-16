@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class AgentsAI : MonoBehaviour
 {
+    public SimulationManager simulationManager;
     public GameObject spawnArea; 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private int livePoints = 3;
     Vector3 randomPos;
+    public bool clicked;
 
     void Start()
     {
@@ -24,6 +27,7 @@ public class AgentsAI : MonoBehaviour
         {
             SetRandomPosition();
         }
+
     }
 
     //Set new random destination inside given area
@@ -37,5 +41,23 @@ public class AgentsAI : MonoBehaviour
         transform.LookAt(randomPos);
 
         return randomPos;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "agent")
+        {
+            livePoints--;
+
+            if(livePoints <= 0)
+            {
+                simulationManager.DestroyAgent(this.gameObject);
+            }
+        }
+    }
+
+    public void Clicked()
+    {
+
     }
 }
