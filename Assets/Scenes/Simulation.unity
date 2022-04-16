@@ -679,6 +679,7 @@ MonoBehaviour:
   clickedObjectPanel: {fileID: 829553405}
   name: {fileID: 1769115707}
   lives: {fileID: 1947822943}
+  destroyPE: {fileID: 8589534303036754686, guid: bdd3c21bf839fcc4095276af7b6d8879, type: 3}
 --- !u!4 &682562644
 Transform:
   m_ObjectHideFlags: 0
@@ -1042,6 +1043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb06f7555e8f8744dbbab01bd15df2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numbersPanel: {fileID: 1449350687}
+  numbersText: {fileID: 1479334231}
 --- !u!4 &1050261804
 Transform:
   m_ObjectHideFlags: 0
@@ -1424,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449350688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1443,7 +1446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.5, y: 4.2107}
+  m_AnchoredPosition: {x: -10.5, y: 4.2106934}
   m_SizeDelta: {x: -81, y: -60.4214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449350689
@@ -1554,7 +1557,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1479334232
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1723,7 +1726,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1814083174}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1050261803}
+        m_TargetAssemblyTypeName: WriteNumbers, Assembly-CSharp
+        m_MethodName: CloseNumbersPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1814083174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1949,7 +1964,7 @@ GameObject:
   - component: {fileID: 2073617440}
   - component: {fileID: 2073617439}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Numbers_1-100_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2018,7 +2033,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2073617440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1050261803}
+        m_TargetAssemblyTypeName: WriteNumbers, Assembly-CSharp
+        m_MethodName: OpenNumbersPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2073617440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,13 +2366,14 @@ GameObject:
   - component: {fileID: 3255198239244753380}
   - component: {fileID: 3255198239244753379}
   - component: {fileID: 3255198239244753378}
+  - component: {fileID: 3255198239244753382}
   m_Layer: 5
   m_Name: transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3255198239244753377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2361,7 +2389,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2436,3 +2464,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3255198239244753376}
   m_CullTransparentMesh: 1
+--- !u!223 &3255198239244753382
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255198239244753376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0

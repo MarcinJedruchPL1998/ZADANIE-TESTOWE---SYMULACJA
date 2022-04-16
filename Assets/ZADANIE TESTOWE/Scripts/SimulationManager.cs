@@ -22,6 +22,9 @@ public class SimulationManager : MonoBehaviour
     [SerializeField] private Text name;
     [SerializeField] private Text lives;
 
+    private GameObject clickObj;
+    [SerializeField] ParticleSystem destroyPE;
+
     void Start()
     {
         transition.GetComponent<Animator>().Play("transition_out");
@@ -64,13 +67,11 @@ public class SimulationManager : MonoBehaviour
 
             if(Physics.Raycast(ray, out rayhit) && rayhit.collider.tag == "agent")
             {
-                GameObject click = rayhit.collider.gameObject;
-                name.text = click.name;
-                lives.text = click.GetComponent<AgentsAI>().livePoints.ToString();
-
+                clickObj = rayhit.collider.gameObject;
+               
                 for(int i = 0; i < agents.Count; i++)
                 {
-                    if (agents[i] == click) //If you click any agent
+                    if (agents[i] == clickObj) //If you click any agent
                     {
                         if(!agents[i].GetComponent<AgentsAI>().clicked) //If clicked agent is unclicked
                         {
@@ -98,16 +99,42 @@ public class SimulationManager : MonoBehaviour
                     }
                 }
 
-                
             }
         }
+
+        if(clickObj != null && clickedObjectPanel.active)
+        {
+            name.text = clickObj.name;
+            lives.text = clickObj.GetComponent<AgentsAI>().livePoints.ToString();
+        }
+
     }
 
 
     public void DestroyAgent(GameObject agent)
     {
+        StartCoroutine(DestroyingParticleEffect(agent.transform.position));
+
+
+        if(name.text == agent.name)
+        {
+            clickedObjectPanel.SetActive(false);
+        }
         agents.Remove(agent);
         Destroy(agent);
+    }
+
+    IEnumerator DestroyingParticleEffect(Vector3 pos)
+    {
+        GameObject pe = Instantiate(destroyPE.gameObject, pos, Quaternion.identity);
+
+        yield return new WaitForSeconds(1);
+
+        pe.GetComponent<ParticleSystem>().enableEmission = false;
+
+        yield return new WaitForSeconds(2);
+
+        Destroy(pe);
     }
 
 }

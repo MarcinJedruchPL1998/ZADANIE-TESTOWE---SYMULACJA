@@ -1,18 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WriteNumbers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject numbersPanel;
+    [SerializeField] Text numbersText;
+    public void OpenNumbersPanel()
     {
-        
+        numbersPanel.SetActive(true);
+
+        for(int i = 0; i < 100; i++)
+        {
+            int number = i + 1;
+            string numberTxt;
+
+            if(number % 3 == 0) //The number is divisible by 3
+            {
+                numberTxt = "Marko, ";
+
+                if(number % 5 == 0)
+                {
+                    numberTxt = "MarkoPolo, ";
+                }
+            }
+            else if(number % 5 == 0) //The number is divisible by 5
+            {
+                numberTxt = "Polo, ";
+
+                if(number % 3 == 0)
+                {
+                    numberTxt = "MarkoPolo, ";
+                }
+            }
+            
+            else
+            {
+                numberTxt = number.ToString() + ", ";
+            }
+
+            numbersText.text += numberTxt;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseNumbersPanel()
     {
-        
+        numbersPanel.SetActive(false);
+        numbersText.text = "";
     }
 }
