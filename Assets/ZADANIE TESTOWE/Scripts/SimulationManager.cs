@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour
 {
+    [SerializeField] GameObject transition;
+
     [SerializeField] private GameObject spawnArea;
     [SerializeField] private GameObject agentPrefab;
 
@@ -22,6 +24,8 @@ public class SimulationManager : MonoBehaviour
 
     void Start()
     {
+        transition.GetComponent<Animator>().Play("transition_out");
+
         StartCoroutine(SpawnNewAgent());
     }
 
