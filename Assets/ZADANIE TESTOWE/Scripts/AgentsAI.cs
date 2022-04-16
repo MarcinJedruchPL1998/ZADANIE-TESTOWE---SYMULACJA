@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AgentsAI : MonoBehaviour
 {
-    public GameObject spawnArea;
+    public GameObject spawnArea; 
     [SerializeField] private float moveSpeed;
     Vector3 randomPos;
 
@@ -17,6 +17,7 @@ public class AgentsAI : MonoBehaviour
     {
         if(transform.position != randomPos)
         {
+            //Move the agent to random position
             transform.position = Vector3.MoveTowards(transform.position, randomPos, moveSpeed * Time.deltaTime);
         }
         else
@@ -25,6 +26,7 @@ public class AgentsAI : MonoBehaviour
         }
     }
 
+    //Set new random destination inside given area
     public Vector3 SetRandomPosition()
     {
         float x = spawnArea.transform.localScale.x;
