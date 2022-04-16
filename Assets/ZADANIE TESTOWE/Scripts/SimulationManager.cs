@@ -52,6 +52,7 @@ public class SimulationManager : MonoBehaviour
 
     private void Update()
     {
+        //Select agent and show it's name and live points on UI
         if(Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -60,25 +61,36 @@ public class SimulationManager : MonoBehaviour
             if(Physics.Raycast(ray, out rayhit) && rayhit.collider.tag == "agent")
             {
                 GameObject click = rayhit.collider.gameObject;
-                clickedObjectPanel.SetActive(true);
                 name.text = click.name;
                 lives.text = click.GetComponent<AgentsAI>().livePoints.ToString();
 
                 for(int i = 0; i < agents.Count; i++)
                 {
-                    if (agents[i] == click)
+                    if (agents[i] == click) //If you click any agent
                     {
-                        agents[i].GetComponent<AgentsAI>().clicked = true;
-                        agents[i].GetComponent<MeshRenderer>().material = clickedMaterial;
-                        agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = clickedMaterial;
+                        if(!agents[i].GetComponent<AgentsAI>().clicked) //If clicked agent is unclicked
+                        {
+                            agents[i].GetComponent<AgentsAI>().clicked = true;
+                            agents[i].GetComponent<MeshRenderer>().material = clickedMaterial;
+                            agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = clickedMaterial;
+                            clickedObjectPanel.SetActive(true);
+                        }
+                        
+                        else //If clicked agent is clicked previously
+                        {
+                            agents[i].GetComponent<AgentsAI>().clicked = false;
+                            agents[i].GetComponent<MeshRenderer>().material = unclickedMaterial;
+                            agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = unclickedMaterial;
+                            clickedObjectPanel.SetActive(false);
+                        }
                     }
 
-                    else
+                    else //If you click other agent, your previously clicked agent becomes unclicked
                     {
                         agents[i].GetComponent<AgentsAI>().clicked = false;
                         agents[i].GetComponent<MeshRenderer>().material = unclickedMaterial;
                         agents[i].transform.GetChild(0).GetComponent<MeshRenderer>().material = unclickedMaterial;
-
+                        
                     }
                 }
 

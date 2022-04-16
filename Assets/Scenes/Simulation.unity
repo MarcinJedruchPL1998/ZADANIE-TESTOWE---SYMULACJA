@@ -562,9 +562,9 @@ GameObject:
   - component: {fileID: 341321441}
   - component: {fileID: 341321440}
   - component: {fileID: 341321439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClickedObjectCamera
-  m_TagString: MainCamera
+  m_TagString: clickedObjectCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,6 +672,9 @@ MonoBehaviour:
   agents: []
   unclickedMaterial: {fileID: 2100000, guid: 7bf3055e8259a474c9f242b3f8880481, type: 2}
   clickedMaterial: {fileID: 2100000, guid: d7c585a2524f069439012df2975d46ac, type: 2}
+  clickedObjectPanel: {fileID: 829553405}
+  name: {fileID: 1769115707}
+  lives: {fileID: 1947822943}
 --- !u!4 &682562644
 Transform:
   m_ObjectHideFlags: 0
@@ -999,13 +1002,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.40327504, y: -0.31710967, z: 0.13653259, w: 0.8474489}
-  m_LocalPosition: {x: 491, y: 668, z: -596}
+  m_LocalRotation: {x: 0.39285362, y: -0.31875998, z: 0.13263403, w: 0.85232997}
+  m_LocalPosition: {x: 400, y: 521, z: -495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50.363, y: -42.06, z: -2.188}
+  m_LocalEulerAnglesHint: {x: 48.959, y: -41.978, z: -2.126}
 --- !u!1 &1089214751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1692,7 @@ GameObject:
   - component: {fileID: 1657395575115021022}
   - component: {fileID: 1657395575115021023}
   - component: {fileID: 1657395575115021024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1772,7 +1775,7 @@ GameObject:
   - component: {fileID: 1657395576542549109}
   - component: {fileID: 1657395576542549110}
   - component: {fileID: 1657395576542549114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AgentPreview
   m_TagString: agent
   m_Icon: {fileID: 0}
